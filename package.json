@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "dev": "nodemon -w server --exec \"babel-node server --presets es2015,stage-0\"",
     "server-build": "babel server -s -D -d server-dist --presets es2015,stage-0",
-    "server-start": "yarn server-build && node server-dist",
+    "server-start": "ng build && yarn server-build && node server-dist",
     "prestart": "npm run -s build",
     "test": "eslint server"
   },
