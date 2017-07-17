@@ -40,6 +40,10 @@ var _config = require('./config/config.json');
 
 var _config2 = _interopRequireDefault(_config);
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -57,6 +61,8 @@ app.use(_bodyParser2.default.json({
     limit: _config2.default.bodyLimit
 }));
 
+app.use(_express2.default.static(_path2.default.join(__dirname, 'dist')));
+
 // connect to db
 (0, _db2.default)(function (db) {
 
@@ -65,6 +71,10 @@ app.use(_bodyParser2.default.json({
 
     // api router
     app.use('/api', (0, _routes2.default)({ config: _config2.default, db: db }));
+
+    app.get('/', function (req, res) {
+        res.sendfile(_path2.default.resolve("./" + 'dist/index.html'));
+    });
 
     app.server.listen(process.env.PORT || _config2.default.port, function () {
         console.log('Started on port ' + app.server.address().port);
