@@ -1,0 +1,36 @@
+<!-- Hero Section
+		================================================== -->
+<section class="hero small-hero" style="background-image:url(assets/images/hero-1.jpg);">
+    <div class="bg-overlay">
+        <div class="container">
+            <div class="intro-wrap">
+                <h1 class="intro-title">Destinations</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Main Section
+		================================================== -->
+<section class="main container">
+    <div class="places">
+
+        <h3 class="hidden">Places</h3>
+
+        <div class="row">
+
+            <div class="col-sm-4" *ngFor="let item of cityList">
+                <article class="place-box card">
+                    <a href="javascript:void(0)" class="place-link">
+                        <header>
+                            <h3 class="entry-title"><i class="fa fa-map-marker"></i>{{item.name}}</h3>
+                        </header>
+                        <div class="entry-thumbnail"> <img width="960" height="540" alt="" [title]="item.name" style="height: 250px;" [src]="'assets/images/cities/' + item.imagePath"></div>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>
