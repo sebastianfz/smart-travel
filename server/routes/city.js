@@ -11,6 +11,8 @@ export default () => {
     api.post('/', cityController.addCity);
     api.put('/:id', cityController.updateCity);
     api.delete('/:id', cityController.deleteCity);
+    api.get('/citydetails/:city', cityController.getCityDetails);
+    api.get('/placedetails/:placeid', cityController.getPlaceDetails);
 
     return api;
 }

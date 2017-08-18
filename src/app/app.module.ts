@@ -7,6 +7,8 @@ import { FooterBarComponent } from "app/footer-bar/footer-bar.component";
 import { routingComponents, AppRoutingModule } from "app/app-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { CoreModule } from "app/core/core.module";
+import { AgmCoreModule } from '@agm/core';
+import { environment } from "environments/environment";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { CoreModule } from "app/core/core.module";
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googlekey
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

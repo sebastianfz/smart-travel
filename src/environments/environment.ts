@@ -5,5 +5,9 @@
 
 export const environment = {
   production: false,
-  apiPath: 'http://localhost:8080/api/'
+  apiPath: 'http://localhost:8080/api/',
+  googlekey: 'AIzaSyBEX3_eNswlhAPyrv5V5HBfXZyIItoKGso',
+  googlePath: {
+    image: 'https://maps.googleapis.com/maps/api/place/photo'
+  }
 };

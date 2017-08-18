@@ -5,17 +5,17 @@
   "main": "server-dist",
   "scripts": {
     "ng": "ng",
-    "start": "node server-dist/index.js",
-    "build": "ng build ",
+	"start": "node server-dist/index.js",
+    "build": "ng build",
     "lint": "ng lint",
     "dev": "nodemon -w server --exec \"babel-node server --presets es2015,stage-0\"",
     "server-build": "babel server -s -D -d server-dist --presets es2015,stage-0",
     "server-start": "yarn server-build && node server-dist",
-   
     "test": "eslint server"
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.0",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",

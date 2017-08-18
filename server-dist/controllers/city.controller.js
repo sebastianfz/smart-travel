@@ -8,10 +8,13 @@ var _city = require('../models/city');
 
 var _city2 = _interopRequireDefault(_city);
 
+var _config = require('../config/config');
+
+var _config2 = _interopRequireDefault(_config);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Import the Todo model so we can query the DB
-
+// src/controllers/main.js
 var cityController = {
 
     getAllCities: function getAllCities(req, res) {
@@ -26,7 +29,7 @@ var cityController = {
     },
 
     getTopCities: function getTopCities(req, res) {
-        _city2.default.find({}).limit(5).exec(function (err, cities) {
+        _city2.default.find({}).limit(8).exec(function (err, cities) {
             if (err) {
                 // Send the error to the client if there is one
                 return res.send(err);
@@ -86,7 +89,47 @@ var cityController = {
             city.isActive = false;
             saveCity(data, req.params.id);
         });
+    },
+
+    getCityDetails: function getCityDetails(req, res) {
+        var key = _config2.default.googlekey;
+        var city = encodeURIComponent(req.params.city);
+        var http = require("https");
+        var url = _config2.default.googlePlaceSearch + "key=" + key + "&query=" + city;
+        http.get(url, function (response) {
+            var body = '';
+            response.on('data', function (chunk) {
+                body += chunk;
+            });
+            response.on('end', function () {
+                var places = JSON.parse(body);
+                res.json(places);
+            });
+        }).on('error', function (e) {
+            console.log("Got error: " + e.message);
+            res.send(err);
+        });
+    },
+
+    getPlaceDetails: function getPlaceDetails(req, res) {
+        var key = _config2.default.googlekey;
+        var placeId = encodeURIComponent(req.params.placeid);
+        var http = require("https");
+        var url = _config2.default.googlePlaceDetails + "key=" + key + "&placeid=" + placeId;
+        http.get(url, function (response) {
+            var body = '';
+            response.on('data', function (chunk) {
+                body += chunk;
+            });
+            response.on('end', function () {
+                var places = JSON.parse(body);
+                res.json(places);
+            });
+        }).on('error', function (e) {
+            console.log("Got error: " + e.message);
+            res.send(err);
+        });
     }
-}; // src/controllers/main.js
+}; // Import the Todo model so we can query the DB
 exports.default = cityController;
 //# sourceMappingURL=city.controller.js.map

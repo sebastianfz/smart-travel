@@ -1,5 +1,7 @@
 // src/controllers/main.js
 import City from '../models/city'; // Import the Todo model so we can query the DB
+import config from '../config/config';
+
 
 let cityController = {
 
@@ -15,7 +17,7 @@ let cityController = {
     },
 
     getTopCities: (req, res) => {
-        City.find({}).limit(5).exec((err, cities) => {
+        City.find({}).limit(8).exec((err, cities) => {
             if (err) {
                 // Send the error to the client if there is one
                 return res.send(err);
@@ -74,6 +76,46 @@ let cityController = {
             }
             city.isActive = false;
             saveCity(data, req.params.id);
+        });
+    },
+
+    getCityDetails: (req, res) => {
+        let key = config.googlekey;
+        let city = encodeURIComponent(req.params.city);
+        var http = require("https");
+        let url = config.googlePlaceSearch + "key=" + key + "&query=" + city;
+        http.get(url, function (response) {
+            let body = '';
+            response.on('data', (chunk) => {
+                body += chunk;
+            });
+            response.on('end', () => {
+                let places = JSON.parse(body);
+                res.json(places);
+            });
+        }).on('error', function (e) {
+            console.log("Got error: " + e.message);
+            res.send(err);
+        });
+    },
+
+    getPlaceDetails: (req, res) => {
+        let key = config.googlekey;
+        let placeId = encodeURIComponent(req.params.placeid);
+        var http = require("https");
+        let url = config.googlePlaceDetails + "key=" + key + "&placeid=" + placeId;
+        http.get(url, function (response) {
+            let body = '';
+            response.on('data', (chunk) => {
+                body += chunk;
+            });
+            response.on('end', () => {
+                let places = JSON.parse(body);
+                res.json(places);
+            });
+        }).on('error', function (e) {
+            console.log("Got error: " + e.message);
+            res.send(err);
         });
     }
 }

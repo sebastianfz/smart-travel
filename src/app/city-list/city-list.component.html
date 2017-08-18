@@ -1,6 +1,6 @@
 <!-- Hero Section
 		================================================== -->
-<section class="hero small-hero" style="background-image:url(assets/images/hero-1.jpg);">
+<section class="hero small-hero" style="background-image:url(assets/images/destinations.jpg);">
     <div class="bg-overlay">
         <div class="container">
             <div class="intro-wrap">
@@ -22,7 +22,7 @@
 
             <div class="col-sm-4" *ngFor="let item of cityList">
                 <article class="place-box card">
-                    <a href="javascript:void(0)" class="place-link">
+                    <a [routerLink]="['../city',item.name]" class="place-link">
                         <header>
                             <h3 class="entry-title"><i class="fa fa-map-marker"></i>{{item.name}}</h3>
                         </header>

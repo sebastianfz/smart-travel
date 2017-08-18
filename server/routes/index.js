@@ -8,9 +8,7 @@ export default () => {
 
     api.use('/city', city());
     // perhaps expose some API metadata at the root
-    api.get('/', (req, res) => {
-        res.json({ name: 'Smart-travel' });
-    });
+
 
     return api;
 }

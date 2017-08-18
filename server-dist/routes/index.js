@@ -17,9 +17,7 @@ exports.default = function () {
 
     api.use('/city', (0, _city2.default)());
     // perhaps expose some API metadata at the root
-    api.get('/', function (req, res) {
-        res.json({ name: 'Smart-travel' });
-    });
+
 
     return api;
 };

@@ -1,6 +1,6 @@
 <!-- Hero Section
 		================================================== -->
-<section class="hero hero-overlap" style="background-image: url('assets/images/hero-1.jpg');">
+<section class="hero hero-overlap" style="background-image: url('assets/images/home.jpg');">
     <div class="bg-overlay">
         <div class="container">
             <div class="intro-wrap">
@@ -29,11 +29,11 @@
 
                 <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let item of cityList">
                     <article class="card">
-                        <a href="javascript:void(0);" class="featured-image" [ngStyle]="{ 'background-image': 'url(assets/images/cities/' + item.imagePath + ')'}">
+                        <a [routerLink]="['../city',item.name]" class="featured-image" [ngStyle]="{ 'background-image': 'url(assets/images/cities/' + item.imagePath + ')'}">
                             <div class="featured-img-inner"></div>
                         </a>
                         <div class="card-details">
-                            <h4 class="card-title"><a href="javascript:void(0);">{{item.name}}</a></h4>
+                            <h4 class="card-title"><a [routerLink]="['./city',item.name]">{{item.name}}</a></h4>
                             <div class="meta-details clearfix">
                                 <ul class="hierarchy">
                                     <li class="symbol"><i class="fa fa-map-marker"></i></li>
@@ -55,12 +55,8 @@
 <section class="regular">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-4">
-                <figure style="text-align:center">
-                    <img src="assets/images/logo-symbol-complex-colors.png" alt="GoExplore!" width="387" height="214">
-                </figure>
-            </div>
-            <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-0">
+
+            <div class="col-md-12  ">
 
                 <div class="col-md-12 col-lg-10 col-lg-offset-1">
                     <h3 style="text-align: center;">Be more than just another traveler when you <em>GoExplore!</em></h3>

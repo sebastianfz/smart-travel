@@ -89,6 +89,10 @@ app.get('/', function (req, res) {
     res.sendfile(_path2.default.resolve("./" + 'dist/index.html'));
 });
 
+app.all('/*', function (req, res) {
+    res.sendfile(_path2.default.resolve("./" + 'dist/index.html'));
+});
+
 app.server.listen(process.env.PORT || _config2.default.port, function () {
     console.log('Started on port ' + app.server.address().port);
 });

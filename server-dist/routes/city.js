@@ -21,6 +21,8 @@ exports.default = function () {
     api.post('/', _city2.default.addCity);
     api.put('/:id', _city2.default.updateCity);
     api.delete('/:id', _city2.default.deleteCity);
+    api.get('/citydetails/:city', _city2.default.getCityDetails);
+    api.get('/placedetails/:placeid', _city2.default.getPlaceDetails);
 
     return api;
 };

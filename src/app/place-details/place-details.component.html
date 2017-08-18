@@ -1,0 +1,100 @@
+<section class="hero destination-header" [ngStyle]="getImage(placeDetails?.photos)">
+    <div class="bg-overlay">
+        <div class="container">
+            <div class="intro-wrap">
+                <h1 class="intro-title">{{placeDetails?.name}}</h1>
+                <ul class="breadcrumbs">
+                    <li class="no-arrow"><i class="icon fa fa-map-marker"></i></li>
+                    <li><a>{{placeDetails?.formatted_address}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main">
+    <div class="container">
+        <h3 class="hidden">Destination</h3>
+        <div class="row">
+            <div class="col-sm-12 ">
+                <section class="narrow places">
+                    <div class="title-row">
+                        <h3 class="title-entry">Map of {{placeDetails?.name}}</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <agm-map [zoom]="14" [latitude]="placeDetails?.geometry.location.lat" [longitude]="placeDetails?.geometry.location.lng">
+                                <agm-marker [latitude]="placeDetails?.geometry.location.lat" [longitude]="placeDetails?.geometry.location.lng"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </section>
+                <section class="narrow places">
+                    <div class="title-row">
+                        <h3 class="title-entry">Information</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 place-info">
+                            <p *ngIf="placeDetails?.formatted_address"><b>Address :</b> {{placeDetails?.formatted_address}}</p>
+                            <p *ngIf="placeDetails?.formatted_phone_number"><b> Phone Number :</b> {{placeDetails?.formatted_phone_number}}</p>
+                            <p *ngIf="placeDetails?.international_phone_number"><b>International Phone Number :</b> {{placeDetails?.international_phone_number}}</p>
+                            <p *ngIf="placeDetails?.formatted_phone_number"><b> Website :</b> <a [href]="placeDetails?.website" target="_blank">{{placeDetails?.website}}</a></p>
+                            <p *ngIf="placeDetails?.opening_hours.open_now"><b> Hours :</b> {{placeDetails?.opening_hours.open_now ? 'Open' : 'Closed'}}</p>
+                            <p *ngIf="placeDetails?.rating"><b> Rating :</b>
+                                <span class="rating rating-star" style="display: inline-block;">
+                                    <i *ngFor="let item of [1,2,3,4,5]" class="fa fa-star icon " [ngClass]="{'highlighted' : item <= placeDetails?.rating}"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="narrow places">
+                    <div class="title-row">
+                        <h3 class="title-entry">Photos</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" *ngFor="let item of placeDetails?.photos">
+                            <article class="place-box card">
+                                <div class="entry-thumbnail" style="height: 210px;">
+                                    <img [src]="getImageUrl(item)" class="attachment-place wp-post-image" [alt]="item.name"></div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <section class="guide-list">
+                    <div class="title-row">
+                        <h3 class="title-entry">Reviews & Ratings</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" *ngFor="let item of placeDetails?.reviews">
+                            <article class="media guide-list-item">
+                                <div class="media-body">
+                                    <!-- <h4 class="media-heading"><a href="directory-single.html">Wine Tasting Tour</a></h4> -->
+                                    <div class="media-description">
+                                        <p>{{item.text}}</p>
+                                    </div>
+                                    <div class="media-details">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <span class="rating rating-star">
+                                                                <i *ngFor="let star of [1,2,3,4,5]" class="fa fa-star icon " [ngClass]="{'highlighted' : star <= item.rating}"></i>
+                                                        </span>
+                                            </li>
+                                            <li class="destination"> <span>{{item.author_name}}</span></li>
+                                            <li class="destination"> <span>{{item.relative_time_description}}</span></li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="media-right media-top">
+                                    <img width="150" height="150" [src]="item.profile_photo_url" class="media-object " [alt]="item.author_name" [title]="item.author_name">
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>

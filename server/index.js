@@ -57,10 +57,14 @@ app.get('/', (req, res) => {
     res.sendfile(path.resolve("./" + 'dist/index.html'));
 });
 
+app.all('/*', (req, res) => {
+  res.sendfile(path.resolve("./" + 'dist/index.html'));
+});
+
+
 app.server.listen(process.env.PORT || config.port, () => {
     console.log(`Started on port ${app.server.address().port}`);
 });
 
 
 export default app;
-

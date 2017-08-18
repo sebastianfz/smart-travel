@@ -1,0 +1,53 @@
+<section class="hero destination-header" [ngStyle]="getImage(cityDetails?.photos)">
+    <div class="bg-overlay">
+        <div class="container">
+            <div class="intro-wrap">
+                <h1 class="intro-title">{{currentCity}}</h1>
+                <ul class="breadcrumbs">
+                    <li class="no-arrow"><i class="icon fa fa-map-marker"></i></li>
+                    <li><a>{{cityDetails?.formatted_address}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main">
+    <div class="container">
+        <h3 class="hidden">Destination</h3>
+        <div class="row">
+            <div class="col-sm-12 ">
+                <section class="narrow places">
+                    <div class="title-row">
+                        <h3 class="title-entry">Map of {{currentCity}}</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <agm-map [zoom]="14" [latitude]="cityDetails?.geometry.location.lat" [longitude]="cityDetails?.geometry.location.lng">
+                                <agm-marker [latitude]="cityDetails?.geometry.location.lat" [longitude]="cityDetails?.geometry.location.lng"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </section>
+                <section class="narrow places">
+                    <div class="title-row">
+                        <h3 class="title-entry">Places in {{currentCity}}</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4" *ngFor="let item of cityDetails?.pointOfInterest">
+                            <article class="place-box card">
+                                <a class="place-link" [routerLink]="['../../place', item.place_id]">
+                                    <header>
+                                        <h3 class="entry-title"><i class="fa fa-map-marker"></i>{{item.name}}</h3>
+                                    </header>
+                                    <div class="entry-thumbnail" style="height: 210px;">
+                                        <img [src]="getImageUrl(item.photos)" class="attachment-place wp-post-image" [alt]="item.name"></div>
+                                </a>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
