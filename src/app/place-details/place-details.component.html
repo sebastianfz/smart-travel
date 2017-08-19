@@ -39,7 +39,7 @@
                             <p *ngIf="placeDetails?.formatted_phone_number"><b> Phone Number :</b> {{placeDetails?.formatted_phone_number}}</p>
                             <p *ngIf="placeDetails?.international_phone_number"><b>International Phone Number :</b> {{placeDetails?.international_phone_number}}</p>
                             <p *ngIf="placeDetails?.formatted_phone_number"><b> Website :</b> <a [href]="placeDetails?.website" target="_blank">{{placeDetails?.website}}</a></p>
-                            <p *ngIf="placeDetails?.opening_hours.open_now"><b> Hours :</b> {{placeDetails?.opening_hours.open_now ? 'Open' : 'Closed'}}</p>
+                            <p *ngIf="placeDetails?.opening_hours?.open_now"><b> Hours :</b> {{placeDetails?.opening_hours?.open_now ? 'Open' : 'Closed'}}</p>
                             <p *ngIf="placeDetails?.rating"><b> Rating :</b>
                                 <span class="rating rating-star" style="display: inline-block;">
                                     <i *ngFor="let item of [1,2,3,4,5]" class="fa fa-star icon " [ngClass]="{'highlighted' : item <= placeDetails?.rating}"></i>
