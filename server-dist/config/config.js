@@ -10,7 +10,7 @@ var config = {
     "sessionSecret": "smarttravel",
     "sessionCollection": "sessions",
     "db": "mongodb://admin:admin@ds163698.mlab.com:63698/smart-travel",
-    "googlekey": 'AIzaSyBEX3_eNswlhAPyrv5V5HBfXZyIItoKGso',
+    "googlekey": 'AIzaSyAduOLW-YfvIWSgXaUIJITwfHufHqKjenY',
     "googlePlaceSearch": "https://maps.googleapis.com/maps/api/place/textsearch/json?",
     "googlePlaceDetails": "https://maps.googleapis.com/maps/api/place/details/json?"
 };
