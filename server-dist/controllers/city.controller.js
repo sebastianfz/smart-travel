@@ -51,7 +51,6 @@ var cityController = {
     },
 
     addCity: function addCity(req, res) {
-        console.log(req.city);
         var city = new _city2.default(req.body);
         city.save({
             text: req.body.text,
@@ -78,7 +77,14 @@ var cityController = {
     updateCity: function updateCity(req, res) {
         var id = req.params.id;
         var data = req.body;
-        saveCity(data, id);
+        _city2.default.update({
+            _id: id
+        }, { $set: data }, function (err, city) {
+            if (err) {
+                return res.send(err);
+            }
+            res.json(city);
+        });
     },
 
     deleteCity: function deleteCity(req, res) {
@@ -87,7 +93,14 @@ var cityController = {
                 return res.send(err);
             }
             city.isActive = false;
-            saveCity(data, req.params.id);
+            _city2.default.update({
+                _id: req.params.id
+            }, { $set: city }, function (err, city) {
+                if (err) {
+                    return res.send(err);
+                }
+                res.json(city);
+            });
         });
     },
 

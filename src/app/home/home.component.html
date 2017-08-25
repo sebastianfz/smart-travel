@@ -5,7 +5,7 @@
         <div class="container">
             <div class="intro-wrap">
                 <h1 class="intro-title">Where the Journey Begins</h1>
-                <div class="intro-text"> Discover your next great adventure, <a href="#">become an explorer</a> to get started!</div>
+                <div class="intro-text"> Discover your next great adventure, <a href="javascript:void(0)">become an explorer</a> to get started!</div>
             </div>
         </div>
     </div>
@@ -63,8 +63,8 @@
                 </div>
                 <div class="col-sm-12">
                     <form class="big-search">
-                        <input type="text" placeholder="Find Your Next Destination...">
-                        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                        <input type="text" placeholder="Find Your Next Destination..." #search>
+                        <button type="button" (click)="searchCity()"><span class="glyphicon glyphicon-search"></span></button>
                     </form>
                 </div>
 

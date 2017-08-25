@@ -24,22 +24,7 @@ app.server = http.createServer(app);
 app.use(morgan('dev'));
 
 // 3rd party middleware
-// app.use(cors({
-//     exposedHeaders: config.corsHeaders
-// }));
-
-app.use((req, res, next) => {
-    // CORS headers
-    res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    // Set custom headers for CORS
-    res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
-    if (req.method == 'OPTIONS') {
-        res.status(200).end();
-    } else {
-        next();
-    }
-});
+app.use(cors());
 
 app.use(bodyParser.json({
     limit: config.bodyLimit
@@ -48,17 +33,12 @@ app.use(bodyParser.json({
 app.use(express.static(path.join(__dirname, 'dist')));
 
 
-
 // api router
 app.use('/api', routes());
 
 
-app.get('/', (req, res) => {
-    res.sendfile(path.resolve("./" + 'dist/index.html'));
-});
-
-app.all('/*', (req, res) => {
-  res.sendfile(path.resolve("./" + 'dist/index.html'));
+app.get('/*', (req, res) => {
+    res.sendfile(path.resolve(path.join(__dirname, 'dist') + '/index.html'));
 });
 
 
@@ -68,3 +48,4 @@ app.server.listen(process.env.PORT || config.port, () => {
 
 
 export default app;
+

@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Feedback List</h4>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Comment</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of feedbackList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.comments}}</td>
+                    <td>{{item.createdDate | date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

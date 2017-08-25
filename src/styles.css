@@ -6,3 +6,7 @@ agm-map {
   .place-info p{
     margin-bottom: 6px;
   }
+
+  .pac-container {
+    z-index: 1040;
+}

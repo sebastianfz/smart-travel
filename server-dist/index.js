@@ -59,22 +59,7 @@ app.server = _http2.default.createServer(app);
 app.use((0, _morgan2.default)('dev'));
 
 // 3rd party middleware
-// app.use(cors({
-//     exposedHeaders: config.corsHeaders
-// }));
-
-app.use(function (req, res, next) {
-    // CORS headers
-    res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    // Set custom headers for CORS
-    res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
-    if (req.method == 'OPTIONS') {
-        res.status(200).end();
-    } else {
-        next();
-    }
-});
+app.use((0, _cors2.default)());
 
 app.use(_bodyParser2.default.json({
     limit: _config2.default.bodyLimit
@@ -85,12 +70,8 @@ app.use(_express2.default.static(_path2.default.join(__dirname, 'dist')));
 // api router
 app.use('/api', (0, _routes2.default)());
 
-app.get('/', function (req, res) {
-    res.sendfile(_path2.default.resolve("./" + 'dist/index.html'));
-});
-
-app.all('/*', function (req, res) {
-    res.sendfile(_path2.default.resolve("./" + 'dist/index.html'));
+app.get('/*', function (req, res) {
+    res.sendfile(_path2.default.resolve(_path2.default.join(__dirname, 'dist') + '/index.html'));
 });
 
 app.server.listen(process.env.PORT || _config2.default.port, function () {

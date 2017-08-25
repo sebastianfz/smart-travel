@@ -39,7 +39,6 @@ let cityController = {
     },
 
     addCity: (req, res) => {
-        console.log(req.city);
         let city = new City(req.body);
         city.save({
             text: req.body.text,
@@ -66,7 +65,14 @@ let cityController = {
     updateCity: (req, res) => {
         let id = req.params.id;
         let data = req.body;
-        saveCity(data, id);
+        City.update({
+            _id: id
+        }, { $set: data }, (err, city) => {
+            if (err) {
+                return res.send(err);
+            }
+            res.json(city);
+        });
     },
 
     deleteCity: (req, res) => {
@@ -75,7 +81,14 @@ let cityController = {
                 return res.send(err);
             }
             city.isActive = false;
-            saveCity(data, req.params.id);
+            City.update({
+                _id: req.params.id
+            }, { $set: city }, (err, city) => {
+                if (err) {
+                    return res.send(err);
+                }
+                res.json(city);
+            });
         });
     },
 

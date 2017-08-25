@@ -6,8 +6,13 @@
 export const environment = {
   production: false,
   apiPath: 'http://localhost:8080/api/',
-  googlekey: 'AIzaSyBEX3_eNswlhAPyrv5V5HBfXZyIItoKGso',
+  googlekey: 'AIzaSyAduOLW-YfvIWSgXaUIJITwfHufHqKjenY',
+
   googlePath: {
     image: 'https://maps.googleapis.com/maps/api/place/photo'
+  },
+  auth0: {
+    clientId: 'dZBxG6Z-Tzw1dQUt4E6aF4idqW1NqZZ-',
+    domain: 'smarttravel.auth0.com'
   }
 };

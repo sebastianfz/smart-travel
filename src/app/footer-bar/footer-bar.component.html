@@ -9,13 +9,24 @@
                     <div class="footer-content-left">
 
                         <p style="font-size:14px; color:#aaa;">
-                            <a href="">About Us</a> &nbsp; | &nbsp;
-                            <a href="">Sign in</a> &nbsp; | &nbsp;
-                            <a href="">Be an Explorer!</a> &nbsp; | &nbsp;
-                            <a href="">Destinations</a> &nbsp; | &nbsp;
-                            <a href="">Contact us</a>
+                            <a [routerLink]="['../aboutus']">About Us</a> &nbsp; | &nbsp;
+                            <a (click)="auth.login()" *ngIf="!auth.loggedIn()">Be an Explorer!</a> &nbsp; | &nbsp;
+                            <a [routerLink]="['../cities']">Cities</a> &nbsp; | &nbsp;
+                            <a [routerLink]="['../contactus']">Contact us</a>
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sub-footer">
+        <div class="container">
+            <div class="row">
+
+                <h3 class="hidden">About</h3>
+
+                <div class="col-xs-12">
+                    <span style="color:#999; font-size: 13px;">&copy; 2017 Smart travel  | Search your destination | GoExplore Travel Theme from Parallelus.</span>
                 </div>
             </div>
         </div>

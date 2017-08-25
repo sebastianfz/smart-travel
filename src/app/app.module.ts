@@ -23,7 +23,8 @@ import { environment } from "environments/environment";
     CoreModule,
     SharedModule,
     AgmCoreModule.forRoot({
-      apiKey: environment.googlekey
+      apiKey: environment.googlekey,
+      libraries: ["places"]
     })
   ],
   providers: [],

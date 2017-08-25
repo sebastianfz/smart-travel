@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h4>User List</h4>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Provider</th>
+                    <th>Is Social</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userList">
+                    <td><img [src]="item.picture" style="width:50px;" class="img img-circle" /> </td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.identities[0].provider}}</td>
+                    <td>{{item.identities[0].isSocial}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
