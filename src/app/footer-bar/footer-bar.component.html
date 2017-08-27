@@ -10,7 +10,7 @@
 
                         <p style="font-size:14px; color:#aaa;">
                             <a [routerLink]="['../aboutus']">About Us</a> &nbsp; | &nbsp;
-                            <a (click)="auth.login()" *ngIf="!auth.loggedIn()">Be an Explorer!</a> &nbsp; | &nbsp;
+                            <a (click)="auth.login()" *ngIf="!auth.loggedIn()">Be an Explorer!</a> <span *ngIf="!auth.loggedIn()">&nbsp; | &nbsp;</span>
                             <a [routerLink]="['../cities']">Cities</a> &nbsp; | &nbsp;
                             <a [routerLink]="['../contactus']">Contact us</a>
                         </p>
