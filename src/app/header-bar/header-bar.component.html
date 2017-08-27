@@ -39,7 +39,7 @@
             <nav class="navbar-collapse collapse" id="navbar-main" [ngClass]="{ 'in': showMenu }">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a [routerLink]="['../cities']">Explore Cities</a></li>
-                    <li><a [routerLink]="['../favouriteplace']" *ngIf="auth.loggedIn()">Favourite Places</a></li>
+                    <li><a [routerLink]="['../favouriteplace']" *ngIf="auth.loggedIn()">Favorite Places</a></li>
                     <li><a href="javascript:void(0);" (click)="auth.login()" *ngIf="!auth.loggedIn()">Login</a></li>
                     <li><a href="javascript:void(0);" (click)="auth.logout()" *ngIf="auth.loggedIn()">Logout</a></li>
                 </ul>
