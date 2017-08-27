@@ -32,23 +32,6 @@
                     </a>
                 </article>
             </div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let item of cityList">
-                <article class="card">
-                    <a [routerLink]="['../city',item.name]" class="featured-image" [ngStyle]="{ 'background-image': 'url(assets/images/cities/' + item.imagePath + ')'}">
-                        <div class="featured-img-inner"></div>
-                    </a>
-                    <div class="card-details">
-                        <h4 class="card-title"><a [routerLink]="['./city',item.name]">{{item.name}}</a></h4>
-                        <div class="meta-details clearfix">
-                            <ul class="hierarchy">
-                                <li class="symbol"><i class="fa fa-map-marker"></i></li>
-                                <li><a href="javascript:void(0);">{{item.country}}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-            </div>
         </div>
     </div>
 </section>
