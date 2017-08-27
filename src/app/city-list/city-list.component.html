@@ -1,6 +1,4 @@
-<!-- Hero Section
-		================================================== -->
-<section class="hero small-hero" style="background-image:url(assets/images/destinations.jpg);">
+<section class="hero hero-overlap" style="background-image: url('assets/images/home.jpg');">
     <div class="bg-overlay">
         <div class="container">
             <div class="intro-wrap">
@@ -10,28 +8,36 @@
     </div>
 </section>
 
+<section class="featured-destinations">
+    <div class="container">
+        <div class="cards overlap">
 
-<!-- Main Section
-		================================================== -->
-
-<section class="main container">
-    <div class="places">
-
-        <h3 class="hidden">Places</h3>
-
-        <div class="row">
-
-
-         <div class="col-sm-4" *ngFor="let item of cityList">
-                <article class="place-box card">
-                    <a [routerLink]="['../city',item.name]" class="place-link">
-                        <header>
-                            <h3 class="entry-title"><i class="fa fa-map-marker"></i>{{item.name}}</h3>
-                        </header>
-                        <div class="entry-thumbnail" style="height: 210px;"> <img alt="" [title]="item.name"  [src]="'assets/images/cities/' + item.imagePath"></div>
-                    </a>
-                </article>
+            <!-- Section Title -->
+            <div class="title-row">
+                <h3 class="title-entry">Featured Destinations</h3>
             </div>
+
+            <!-- Cards Row -->
+            <div class="row">
+
+                <div class="col-md-3 col-sm-6 col-xs-12" *ngFor="let item of cityList">
+                    <article class="card">
+                        <a [routerLink]="['../city',item.name]" class="featured-image" [ngStyle]="{ 'background-image': 'url(assets/images/cities/' + item.imagePath + ')'}">
+                            <div class="featured-img-inner"></div>
+                        </a>
+                        <div class="card-details">
+                            <h4 class="card-title"><a [routerLink]="['./city',item.name]">{{item.name}}</a></h4>
+                            <div class="meta-details clearfix">
+                                <ul class="hierarchy">
+                                    <li class="symbol"><i class="fa fa-map-marker"></i></li>
+                                    <li><a href="javascript:void(0);">{{item.country}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <!-- /.row -->
         </div>
     </div>
 </section>
