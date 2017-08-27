@@ -18,10 +18,13 @@ export class HeaderBarComponent implements OnInit {
     public searchElementRef: ElementRef;
 
     searchData: string;
+    showMenu: boolean;
 
 
     constructor(private router: Router, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, public auth: AuthService) {
-
+      this.router.events.subscribe( (e)  => {
+        this.showMenu = false;
+      })
     }
 
     login() {
